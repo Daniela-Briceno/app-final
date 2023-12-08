@@ -1,0 +1,42 @@
+<!-- file-encryption.component.html -->
+<div class="upload-container">
+  <h2>Encriptación/Desencriptación de archivo de texto</h2>
+  <div class="file-input-container">
+    <label class="file-label">
+      <input type="file" (change)="handleFileInput($event)" class="file-input" />
+      <span class="file-icon">📂</span> Seleccionar Archivo
+    </label>
+  </div>
+
+  <div>    
+    <label for="secretKeyInput">Clave Secreta:</label>
+    <input type="text" id="secretKeyInput" [(ngModel)]="secretKey" />
+  </div>
+
+  <div class="options-container">
+    <label class="option-label">
+      <input type="radio" [(ngModel)]="selectedOption" value="encrypt" /> Encriptar
+    </label>
+    
+    <label class="option-label">
+      <input type="radio" [(ngModel)]="selectedOption" value="decrypt" /> Desencriptar
+    </label>
+  </div>
+
+  <div *ngIf="fileContent !== ''" class="content-container">
+    <h3>Contenido del archivo</h3><br/>
+    <pre class="decrypted-data" style="max-width: 480px; height: auto;">{{ fileContent }}</pre>
+  </div>
+
+  <div *ngIf="resultContent !== ''" class="content-container">
+    <h3>Contenido resutante</h3><br/>
+    <pre class="decrypted-data" style="max-width: 480px; height: auto;">{{ resultContent }}</pre>
+  </div>
+
+  <div *ngIf="fileContent === ''" class="no-data-message">
+    <p>No se ha seleccionado un archivo. Favor seleccioanr un archivo a procesar.</p>
+  </div>
+
+  <button (click)="processFile()"  class="encrypt-button">Procesar archivo</button>  
+  <button (click)="downloadFile()" class="download-button">Descargar Resultado</button>
+</div>

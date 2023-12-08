@@ -1,0 +1,13 @@
+<div class="encriptacion-container">
+  <h2>Proceso de Encriptación</h2>
+  <div class="tutorial-step" *ngFor="let step of tutorialSteps; let i = index">
+    <h3>Paso {{ i + 1 }}</h3>
+    <p>{{ step.description }}</p>
+    <div *ngIf="i === 0">
+      <label for="cifradoSelect">Selecciona un cifrado:</label>
+      <select id="cifradoSelect" [(ngModel)]="cifradoSeleccionado" name="cifrado" (change)="redirigir()">
+        <option *ngFor="let cifrado of cifrados" [value]="cifrado.nombre">{{ cifrado.nombre }}</option>
+      </select>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="container mt-4">
+    <h2>User List</h2>
+    <input
+      type="text"
+      class="form-control mb-3"
+      placeholder="Filter by Email, Name, etc."
+      (input)="onFilterChange($event)"
+    />
+  
+    <div *ngIf="filteredUserList.length === 0" class="alert alert-warning">
+      No users found.
+    </div>
+  
+    <div *ngFor="let user of filteredUserList | slice: (currentPage - 1) * pageSize : (currentPage - 1) * pageSize + pageSize">
+      <div class="card mt-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+          <p class="card-text">{{ user.email }}</p>
+          <p class="card-text">{{ user.password }}</p>
+          <!-- Otros detalles del usuario que desees mostrar -->
+        </div>
+      </div>
+    </div>
+  
+    <ngb-pagination
+      [(page)]="currentPage"
+      [pageSize]="pageSize"
+      [collectionSize]="filteredUserList.length"
+      aria-label="Pagination"
+    ></ngb-pagination>
+  </div>
+  

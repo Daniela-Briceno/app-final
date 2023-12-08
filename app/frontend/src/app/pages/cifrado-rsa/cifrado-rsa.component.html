@@ -1,0 +1,58 @@
+<div class="rsa-container">
+    <h2>Algoritmo RSA</h2>
+    <div>
+        <p><strong>Paso 1:</strong> Genera dos numero primos: p y q</p>
+        <button (click)="generarPrimosAleatorio()">Generar numeros primos</button> <br/>
+        <label for="primo1">Q: {{primoP}}</label><br/>
+        <label for="primo2">P: {{primoQ}}</label>
+    </div>
+    
+    <div>
+        <p><strong>Paso 2:</strong> Calcular n</p>        
+        <label>N = P × Q </label><br/>
+        <label for="moduloN">N: {{n}}</label><br/>
+    </div>
+    
+    <div>
+        <p><strong>Paso 3:</strong> Calcular phi</p>      
+        <button (click)="calcularPhi()">Calcular phi</button> <br/>  
+        <label for="moduloN">phi: {{phi}}</label><br/>
+    </div>
+    
+    <div>
+        <p><strong>Paso 4:</strong> Escoger un exponente e</p>
+        <button (click)="escogerExponente()">Escoger e</button> <br/>
+        <label for="exponente">Exponente e: {{ e }}</label><br/>
+    </div>
+
+    <div>
+        <p><strong>Paso 5:</strong> Determinar d</p>
+        <button (click)="determinarD()">Determinar d</button> <br/>
+        <label for="exponenteD">Exponente d: {{ d }}</label><br/>
+    </div>
+
+    <div *ngIf="mensajeOriginal !== ''">
+      <p><strong>Paso 5:</strong> Ingresa un mensaje original</p>
+      <label for="mensajeInput">Mensaje:</label>
+      <input type="text" id="mensajeInput" [(ngModel)]="mensajeOriginal">
+      <button (click)="encriptarMensaje()">Encriptar</button>
+    </div>
+
+    <div>
+        <p><strong>Paso 6:</strong> Clave pública (n, e)</p>
+        <label for="clavePublica">Clave pública: (n, e): ({{ n }}, {{ e }})</label><br/>
+    </div>
+
+    <div *ngIf="mensajeEncriptado.length > 0">
+        <p><strong>Paso 6:</strong> Mensaje Encriptado</p>
+        <p>Mensaje Encriptado: {{ mensajeEncriptado.join(', ') }}</p>
+        <button (click)="desencriptarMensaje()">Desencriptar</button>
+    </div>
+    
+    <div *ngIf="mensajeDesencriptado !== ''">
+        <p>Mensaje Desencriptado: {{ mensajeDesencriptado }}</p>
+    </div>
+      
+      <button (click)="limpiarMensajes()">Limpiar Mensajes</button>
+
+  </div>

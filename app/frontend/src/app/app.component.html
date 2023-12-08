@@ -1,0 +1,10 @@
+<!-- app.component.html -->
+<ng-container *ngIf="isAuthenticated(); else headerOutTemplate">
+    <app-header-in></app-header-in>
+  </ng-container>
+  <ng-template #headerOutTemplate>
+    <app-header-out></app-header-out>
+  </ng-template>
+  
+  <router-outlet></router-outlet>
+  
