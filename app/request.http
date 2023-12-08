@@ -1,0 +1,20 @@
+######
+POST http://127.0.0.1:8000/api/creacion-usuario/  HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "John",
+  "apellido": "Doe",
+  "correo": "john.doe2@example.com",
+  "contrasena": "mypassword123"
+}
+######
+
+POST http://127.0.0.1:8000/api/validacion-credenciales-usuario/  HTTP/1.1
+Content-Type: application/json
+
+{
+  "usuario": "john.doe@example.com",
+  "contrasena": "mypassword123"
+}
+######
